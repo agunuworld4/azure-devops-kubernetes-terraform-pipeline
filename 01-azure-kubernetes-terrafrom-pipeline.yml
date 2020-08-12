@@ -29,7 +29,8 @@ steps:
     command: 'plan'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
     environmentServiceName: 'azure-terraform-aks-in28minutes-connection-manager-resource'
-    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    commandOptions: '-var="key=client_id" -var="key=client_secret" -var="ssh_public_key=$(publickey.secureFilePath)"'
+  #commandOptions: '-var="key=client_id"-var client_id=$(client_id) -var client_secret=$(client_secret)-var="key=client_id" -var ssh_public_key=$(publickey.secureFilePath)'
 
 - task: TerraformCLI@0
   inputs:
